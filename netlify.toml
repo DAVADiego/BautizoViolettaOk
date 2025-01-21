@@ -1,5 +1,17 @@
 [build]
-  functions = "netlify/functions"
+  publish = "dist"
+  functions = "functions"
+
+[[plugins]]
+  package = "@netlify/plugin-functions-core"
 
 [functions]
-  node_bundler = "esbuild"
+  directory = "functions"
+
+[[plugins]]
+  package = "@netlify/plugin-inline-functions"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
