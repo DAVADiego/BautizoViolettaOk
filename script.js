@@ -92,33 +92,23 @@ document.addEventListener('DOMContentLoaded', () => {
         form.insertBefore(newRow, form.lastElementChild);
     });
 
-    form.addEventListener('submit', async (event) => {
-        event.preventDefault();
+   document.getElementById('rsvp-form').addEventListener('submit', async function(event) {
+    event.preventDefault();  // Evita que el formulario se envíe de forma tradicional
 
-        const formData = new FormData(form);
-        const data = {};
-        formData.forEach((value, key) => {
-            if (!data[key]) {
-                data[key] = [];
-            }
-            data[key].push(value);
+    const formData = new FormData(this);  // Captura los datos del formulario
+    const data = Object.fromEntries(formData.entries());  // Convierte los datos a un objeto
+
+    try {
+        const response = await fetch('/.netlify/functions/submit-rsvp', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)  // Envía los datos como JSON
         });
 
-        // Aquí se envían los datos al backend
-        try {
-            const response = await fetch(form.action, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            });
-
-            if (response.ok) {
-                document.getElementById('confirmation-message').style.display = 'block';
-            }
-        } catch (error) {
-            console.error('Error al enviar el formulario:', error);
+        if (response.ok) {
+            document.getElementById('confirmation-message').style.display = 'block';  // Muestra el mensaje de confirmación
         }
-    });
+    } catch (error) {
+        console.error('Error al enviar el formulario:', error);
+    }
 });
