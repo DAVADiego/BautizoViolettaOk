@@ -1,0 +1,509 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;  
+    padding: 0; 
+    background-color: rgb(255, 0, 208);
+    color: #b84a4add;
+    display: flex;
+    flex-direction: column; 
+    text-align: center;   
+}   
+
+header {
+    
+    text-align: center;
+    background-color: rgb(255, 0, 221);
+    
+} 
+
+.dynamic-header {   
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #c800e2, #e294cfbe, #941a6579); /* Gradiente llamativo */
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 3s ease-in-out;   
+    
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;     
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animación de texto deslizante */
+@keyframes textSlide {
+    from {
+        opacity: 0;
+        transform: translateX(-50%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Efecto pulsante para el nombre */
+@keyframes pulse {
+    0%, 100% {
+        text-shadow: 0 0 10px #fcb045, 0 0 20px #fd1d1d;
+    }
+    50% {
+        text-shadow: 0 0 20px #fd1d1d, 0 0 30px #833ab4;
+    }
+}
+
+.header-content h1 {
+    font-family: 'Playfair Display', serif !important;
+    font-style: italic;
+    font-size: 500% ;
+    color: rgb(31, 5, 5);
+    margin: 5px 0;
+    animation: textSlide 1.5s ease-in-out forwards;
+}
+
+.header-content p {
+    font-size: 300%;
+    margin: 10px 0; 
+    animation: fadeIn 4s ease-in-out;
+    color: rgb(31, 5, 5); 
+    font-family: 'Lobster', cursive !important;
+    line-height: 1.3;
+    letter-spacing: 1px;     
+    
+}
+
+
+.gallery {
+    padding: 40px;
+    color: #07384b;
+    font-size: 130% ;
+    position: relative;
+    animation: fadeIn 5s ease-in-out;
+    
+       
+}
+/* Contenedor del carrusel que mantiene las imágenes en fila */
+.carousel {
+    overflow: hidden; /* Oculta el desbordamiento */
+    width: 100%; /* Ajusta al tamaño disponible */    
+    position: relative;
+    margin: 0 auto;
+    max-width: 800px;    
+    display: flex;    
+     
+   }
+
+/* Trayectoria del carrusel: se colocan las imágenes en una fila */
+.carousel-track {
+    display: flex; /* Esto organiza las imágenes en fila */    
+    transition: transform 0.5s ease-in-out;
+    margin: 0 auto;
+    align-items:center;  
+    width: 330px;
+}
+
+/* Estilo de cada imagen */
+.carousel-track img {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 10px;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    
+}
+
+.carousel-track img.active {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.carousel-track img:not(.active) {
+    transform: scale(0.7);
+    opacity: 0.5;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 5px;
+}
+
+.carousel-button.prev {
+    left: 10px;
+}
+
+.carousel-button.next {
+    right: 10px;
+}
+
+.mensaje {
+    font-family: 'Baskerville', serif !important;
+    font-style: italic;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110vh;
+    background-image: url(Fotos/Fondo\ Bautizo.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;    
+}
+
+.card {
+    position: relative;         
+    width: 70%;
+    max-width: 500px;
+    height: 750px;
+    background: rgba(255, 255, 255, 0.8);  
+    border-radius: 30px;    
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    text-align: center;
+    padding: 5px;
+    color: #332121;
+    opacity: 0; 
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 2s ease;
+}
+
+.card:hover {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.headerMensaje {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;    
+}
+
+.cross {
+    width: 200px;
+    animation: flash 1.5s infinite alternate;
+}
+
+@keyframes flash {
+    0% {
+        opacity: 1.5;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0.7;
+        transform: scale(1.4);
+    }
+}
+
+.content {
+    font-size: 14px;
+    line-height: 1.4;    
+    opacity: 0; 
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 2s ease;
+       
+}
+
+
+.content:hover {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.agradecimiento {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.agradecimiento a {
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.agradecimiento a:hover {
+    text-decoration: underline;
+}
+
+.bautizo {
+    margin: 0;
+    padding: 50px 20px;
+    text-align: center;
+    font-family: 'Playfair Display', serif !important;
+    font-style: italic;
+    font-size: 100% ;
+    color: rgb(31, 5, 5);
+    background-color: rgb(255, 255, 255);
+    animation: fadeIn 5s ease-in-out;
+    
+}
+
+.bautizo h1{
+    font-size: 200% ;
+}
+
+.bautizo p {
+    font-size: 100% ;
+}
+
+
+.map-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.map-controls {
+    display: flex;
+    justify-content: center; /* Centrar contenido horizontalmente */
+    align-items: center;    /* Alinear verticalmente */
+    gap: 10px;              /* Espacio entre el texto y el botón */
+    margin-top: 10px;       /* Espaciado adicional hacia arriba */
+}
+
+.map-text {
+    font-size: 16px;
+    font-weight: bold;
+    transition: transform 0.3s ease; /* Transición para mover el texto */
+}
+
+.map-directions-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #d63384;
+    color: white;
+    text-decoration: none;
+    border-radius: 15px;
+    font-weight: bold;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    transform-origin: center;
+}
+
+.map-controls:hover .map-directions-button {
+    transform: scale(1.2); /* Agrandar el botón */
+    background-color: #a91f67; /* Cambiar color de fondo */
+}
+
+.map-controls:hover .map-text {
+    transform: translateX(-15px); /* Mover el texto a la izquierda */
+}
+
+@media (max-width: 768px) {
+    .carousel-button {
+        font-size: 20px;
+        padding: 5px 10px;
+    }
+    .map-directions-button {
+        width: 100%; /* Botón más grande en móvil */
+    }
+}
+
+.recepcion {    
+    /*
+    width: 90vw;
+    width: auto;    
+    display: flex;
+    flex-direction: column; 
+    align-items: center;   
+    justify-content: center; 
+    position: relative;    
+    margin: 0;
+    padding: 20px 20px;
+    text-align: center;
+    font-family: 'Playfair Display', serif !important;
+    font-style: italic;
+    font-size: 100% ;
+    color: rgb(31, 5, 5);
+    background-color: rgb(235, 19, 235);
+    overflow: hidden;*/
+    
+    margin: 0;
+    padding: 20px 20px;
+    text-align: center;
+    font-family: 'Playfair Display', serif !important;
+    font-style: italic;
+    font-size: 100% ;
+    color: rgb(31, 5, 5);
+    background-color: rgb(235, 19, 235);    
+          
+}
+
+.recepcion h1{
+    font-size: 200% ;
+}
+
+.recepcion-caja p {
+    font-size: 100% ;
+}
+
+.recepcion-caja {    
+    
+    background: linear-gradient(135deg, #c800e2, #e294cfbe, #941a6579);
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);   
+    display: flex;
+    flex-direction: column; 
+    align-items: center;   
+    justify-content: center; 
+    position: relative;     
+}
+
+
+.recepcion-foto {    
+    margin: 20px 20px; /* Espaciado alrededor de la imagen */
+    padding: 20px 20px;
+
+}
+
+.recepcion-foto img {
+    position: relative;
+    max-width: 80vw;
+    max-height: 70vh;
+    border-radius: 30px; /* Opcional, para bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para resaltar la imagen */
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.recepcion-foto:hover img {
+    transform: scale(1.2);
+}
+
+.map-container2 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.map-controls2 {
+    display: flex;
+    justify-content: center; /* Centrar contenido horizontalmente */
+    align-items: center;    /* Alinear verticalmente */
+    gap: 10px;              /* Espacio entre el texto y el botón */
+    margin-top: 10px;       /* Espaciado adicional hacia arriba */
+}
+
+.map-text2 {
+    font-size: 16px;
+    font-weight: bold;
+    transition: transform 0.3s ease; /* Transición para mover el texto */
+}
+
+.map-directions-button2 {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #d63384;
+    color: white;
+    text-decoration: none;
+    border-radius: 15px;
+    font-weight: bold;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    transform-origin: center;
+}
+
+.map-controls2:hover .map-directions-button2 {
+    transform: scale(1.2); /* Agrandar el botón */
+    background-color: #a91f67; /* Cambiar color de fondo */
+}
+
+.map-controls2:hover .map-text2 {
+    transform: translateX(-15px); /* Mover el texto a la izquierda */
+}
+
+
+
+
+
+.rsvp-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #a1b48f;
+}
+
+
+.section .form-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.section .form-row input {
+    flex: 1 1 100%; /* Los inputs ocuparán toda la línea en dispositivos pequeños */
+    padding: 8px;
+    font-size: 14px;
+}
+
+.section .form-row button {
+    flex: 0 0 auto;
+    padding: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 8px;
+    border:#007BFF
+}
+
+#add-row {
+    background-color: #007BFF;
+    color: white;
+}
+
+.remove-row {
+    background-color: #FF4D4D;
+    color: white;
+}
+
+button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    display: block;
+}
+
+button[type="submit"]:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+button[type="submit"]:active {
+    background-color: #1e7e34;
+    transform: scale(1);
+}
+
+@media (min-width: 480px) {
+    .section .form-row input {
+        flex: 1; /* Los inputs compartirán espacio en pantallas más grandes */
+    }
+}
+
+
+footer {
+    background-color: #dd1414;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
