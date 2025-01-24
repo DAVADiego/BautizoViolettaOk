@@ -162,35 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
             form.insertBefore(newRow, form.lastElementChild);
         });
           
-        form.addEventListener('submit', async (event) => {
-            event.preventDefault();
-    
-            const formData = new FormData(form);
-            const data = {};
-            formData.forEach((value, key) => {
-                if (!data[key]) {
-                    data[key] = [];
-                }
-                data[key].push(value);
-            });
-    
-            // Aquí se envían los datos al backend
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data),
-                });
-    
-                if (response.ok) {
-                    document.getElementById('confirmation-message').style.display = 'block';
-                }
-            } catch (error) {
-                console.error('Error al enviar el formulario:', error);
-            }
-        });
+        
     });
 });
 

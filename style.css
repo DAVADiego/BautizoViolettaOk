@@ -220,7 +220,7 @@ header {
     opacity: 0; /* Inicialmente invisible */
     transform: translateY(20px); /* Inicialmente desplazado */
     transition: opacity 10s ease, transform 3s ease;
-    margin-top: 120px; /* Añadir un poco de espacio por encima del mensaje */
+    margin-top: 40px; /* Añadir un poco de espacio por encima del mensaje */
 }
 
 .content.visible {
