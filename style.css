@@ -158,7 +158,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 110vh;
+    height: 110vh; /* altura inicial para la animación */
     background-image: url(Fotos/Fondo\ Bautizo.jpg);
     background-size: cover;
     background-position: center;
@@ -177,54 +177,55 @@ header {
     text-align: center;
     padding: 5px;
     color: #332121;
-    opacity: 0; 
-    transform: translateY(20px);
-    transition: opacity 1s ease, transform 2s ease;
-}
-
-.card:hover {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.headerMensaje {
-    position: relative;
-    width: 100%;
+    opacity: 0; /* Inicialmente no visible */
+    transform: translateY(100px); /* Inicialmente desplazado hacia abajo */
+    transition: opacity 12s ease, transform 2s ease;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: center; /* Esto asegura que el contenido se alinee verticalmente */
     align-items: center;
-    margin-bottom: 10px;    
+}
+
+.card.visible {
+    opacity: 1;
+    transform: translateY(0); /* Al hacer visible, vuelve a su lugar */
 }
 
 .cross {
     width: 200px;
-    animation: flash 1.5s infinite alternate;
+    opacity: 0; /* Inicialmente invisible */
+    transform: translateY(20px); /* Inicialmente desplazada */
+    animation: flash 3s infinite alternate; /* Añadimos la animación */
 }
 
 @keyframes flash {
     0% {
-        opacity: 1.5;
-        transform: scale(1);
+        opacity: 0;
+        transform: translateY(20px) scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(0) scale(1.2); /* Zoom de la cruz */
     }
     100% {
-        opacity: 0.7;
-        transform: scale(1.4);
+        opacity: 0;
+        transform: translateY(20px) scale(0.8);
     }
 }
 
-.content {
-    font-size: 14px;
-    line-height: 1.4;    
-    opacity: 0; 
-    transform: translateY(20px);
-    transition: opacity 1s ease, transform 2s ease;
-       
+.content {    
+    margin: 20;
+    padding: 10;
+    text-align: center;
+    opacity: 0; /* Inicialmente invisible */
+    transform: translateY(20px); /* Inicialmente desplazado */
+    transition: opacity 10s ease, transform 3s ease;
+    margin-top: 120px; /* Añadir un poco de espacio por encima del mensaje */
 }
 
-
-.content:hover {
+.content.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0); /* El mensaje aparece */
 }
 
 

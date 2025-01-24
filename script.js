@@ -64,6 +64,47 @@ updateCarousel();
 startAutoSlide();
 
 document.addEventListener('DOMContentLoaded', () => {
+    const cross = document.querySelector('.cross');
+    const content = document.querySelector('.content');
+    const card = document.querySelector('.card');
+
+    // Función que verifica si un elemento está visible en el viewport
+    const checkVisibility = () => {
+        const crossRect = cross.getBoundingClientRect();
+        const contentRect = content.getBoundingClientRect();
+        const cardRect = card.getBoundingClientRect();
+
+        // Mostrar la cruz cuando entre en el viewport
+        if (crossRect.top <= window.innerHeight && crossRect.bottom >= 0) {
+            cross.classList.add('visible'); // Cruz visible
+        } else {
+            cross.classList.remove('visible'); // Cruz desaparece
+        }
+
+        // Mostrar el contenido del mensaje cuando entre en el viewport
+        if (contentRect.top <= window.innerHeight && contentRect.bottom >= 0) {
+            content.classList.add('visible'); // Mensaje visible
+        } else {
+            content.classList.remove('visible'); // Mensaje desaparece
+        }
+
+        // Control de la visibilidad de la tarjeta en general
+        if (cardRect.top <= window.innerHeight && cardRect.bottom >= 0) {
+            card.classList.add('visible'); // Tarjeta visible
+        } else {
+            card.classList.remove('visible'); // Tarjeta desaparece
+        }
+    };
+
+    // Verificamos la visibilidad al cargar la página
+    checkVisibility();
+
+    // Agregamos un listener para que se verifique al hacer scroll
+    window.addEventListener('scroll', checkVisibility);
+}); 
+
+
+document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('rsvp-form');
     const addRowButton = document.getElementById('add-row');
 
