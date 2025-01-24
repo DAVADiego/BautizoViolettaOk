@@ -146,54 +146,20 @@
         </div>       
     </section>
 
-    <section class="section rsvp-form">
-        <h3>Confirmación de Asistencia</h3>
-        <p>Por favor, confirma los datos de las personas que asistirán:</p>
-        <form id="rsvp-form" method="post" data-netlify="true">
-            <div class="form-row">
-                <input type="text" name="name1" placeholder="Tu Nombre" required>
-                <input type="number" name="age1" placeholder="Edad" min="0" required>
-                <input type="email" name="email1" placeholder="Correo Electrónico" required>
-                <button type="button" id="add-row">+</button>
-            </div>
-            <button type="submit">Confirmar Asistencia</button>
-        </form>
-        <div id="confirmation-message" style="display: none;">¡Gracias por confirmar tu asistencia!</div>
-    </section>
-    
-
-    <footer>
-        <p>Con amor,</p>
-        <p>Diego Alejandro Vargas Andrade, Stefanny Narvaez Rojas y la pequeña Violetta.</p>
-        <p>¡Gracias por ser parte de este día tan especial para nuestra familia!</p>
-    </footer>
-
-<script src="script.js"></script> <!-- Vinculando el archivo JavaScript -->
-
-<script>
-    let rowCount = 1; // Contador para los nombres únicos
-
-    document.getElementById('add-row').addEventListener('click', () => {
-        rowCount++;
-        const formRow = document.createElement('div');
-        formRow.classList.add('form-row');
-
-        formRow.innerHTML = `
-            <input type="text" name="name${rowCount}" placeholder="Tu Nombre" required>
-            <input type="number" name="age${rowCount}" placeholder="Edad" min="0" required>
-            <input type="email" name="email${rowCount}" placeholder="Correo Electrónico" required>
-        `;
-
-        document.getElementById('rsvp-form').insertBefore(formRow, document.getElementById('add-row').parentNode);
-    });
-</script>
-
-<form netlify="true" name="rsvp-form" method="POST">
-    <input type="text" name="name" placeholder="Tu Nombre" required>
-    <input type="number" name="age" placeholder="Edad" required>
-    <input type="email" name="email" placeholder="Correo Electrónico" required>
-    <button type="submit">Confirmar Asistencia</button>
-</form>
+<section class="section rsvp-form"> 
+    <h3>Confirmación de Asistencia</h3>
+    <p>Por favor, confirma los datos de las personas que asistirán:</p>
+    <form id="rsvp-form" method="post" data-netlify="true">
+        <div class="form-row">
+            <input type="text" name="name1" placeholder="Tu Nombre" required>
+            <input type="number" name="age1" placeholder="Edad" min="0" required>
+            <input type="email" name="email1" placeholder="Correo Electrónico" required>
+            <button type="button" id="add-row">+</button>
+        </div>
+        <button type="submit">Confirmar Asistencia</button>
+    </form>
+    <div id="confirmation-message" style="display: none;">¡Gracias por confirmar tu asistencia!</div>
+</section>
     
 
     <footer>

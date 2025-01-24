@@ -92,33 +92,63 @@ document.addEventListener('DOMContentLoaded', () => {
         form.insertBefore(newRow, form.lastElementChild);
     });
 
-    form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-
-        const formData = new FormData(form);
-        const data = {};
-        formData.forEach((value, key) => {
-            if (!data[key]) {
-                data[key] = [];
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('rsvp-form');
+        const addRowButton = document.getElementById('add-row');
+    
+        addRowButton.addEventListener('click', () => {
+            const firstRow = document.querySelector('.form-row');
+            const newRow = firstRow.cloneNode(true);
+    
+            // Limpiar los valores de los inputs
+            newRow.querySelectorAll('input').forEach(input => input.value = '');
+    
+            // Cambiar el texto y el comportamiento del botón
+            const addButton = newRow.querySelector('#add-row');
+            if (addButton) {
+                addButton.id = ''; // Eliminar el ID para que no haya duplicados
+                addButton.textContent = '-';
+                addButton.classList.add('remove-row');
+                addButton.classList.remove('add-row');
+    
+                // Agregar funcionalidad de eliminación al botón "-"
+                addButton.addEventListener('click', () => {
+                    newRow.remove();
+                });
             }
-            data[key].push(value);
+    
+            // Insertar la nueva fila antes del botón de "Confirmar Asistencia"
+            form.insertBefore(newRow, form.lastElementChild);
         });
-
-        // Aquí se envían los datos al backend
-        try {
-            const response = await fetch(form.action, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
+    
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+    
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => {
+                if (!data[key]) {
+                    data[key] = [];
+                }
+                data[key].push(value);
             });
-
-            if (response.ok) {
-                document.getElementById('confirmation-message').style.display = 'block';
+    
+            // Aquí se envían los datos al backend
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+    
+                if (response.ok) {
+                    document.getElementById('confirmation-message').style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error al enviar el formulario:', error);
             }
-        } catch (error) {
-            console.error('Error al enviar el formulario:', error);
-        }
+        });
     });
 });
