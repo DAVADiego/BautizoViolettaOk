@@ -4,5 +4,4 @@
 [functions]
   node_bundler = "esbuild"
 
-[[plugins]]
-package = "@netlify/plugin-form-submission"
+
