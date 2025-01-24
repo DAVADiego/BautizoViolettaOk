@@ -9,7 +9,7 @@
   directory = "functions"
 
 [[plugins]]
-package = "@netlify/plugin-inline-functions"
+package = "@netlify/config"
 
 [[redirects]]
   from = "/*"
