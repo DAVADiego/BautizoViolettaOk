@@ -5,8 +5,6 @@ const images = Array.from(track.children); // Todas las imágenes del carrusel
 let currentIndex = 0; // Índice inicial
 let autoSlideInterval; // Control del intervalo para el desplazamiento automático
 
-
-
 function updateCarousel() {
     images.forEach((img, index) => {
         if (index === currentIndex) {
@@ -62,6 +60,8 @@ document.querySelector('form').addEventListener('submit', (e) => {
 // Inicia el carrusel
 updateCarousel();
 startAutoSlide();
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const cross = document.querySelector('.cross');

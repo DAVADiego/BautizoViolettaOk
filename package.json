@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "@netlify/config": "^20.21.6",
+    "@netlify/functions": "^3.0.0"
+  }
+}
