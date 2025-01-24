@@ -137,11 +137,11 @@
 <section class="section rsvp-form"> 
     <h3>Confirmación de Asistencia</h3>
     <p>Por favor, confirma los datos de las personas que asistirán:</p>
-    <form autocomplete="off" netlify>
+    <form id="rsvp-form" method="post" netlify="true">
         <div class="form-row">
-            <input type="text" name="name" placeholder="Tu Nombre" required>
-            <input type="number" name="age" placeholder="Edad" min="0" required>
-            <input type="email" name="email" placeholder="Correo Electrónico" required>
+            <input type="text" name="name1" placeholder="Tu Nombre" required>
+            <input type="number" name="age1" placeholder="Edad" min="0" required>
+            <input type="email" name="email1" placeholder="Correo Electrónico" required>
             <button type="button" id="add-row">+</button>
         </div>
         <button type="submit">Confirmar Asistencia</button>
