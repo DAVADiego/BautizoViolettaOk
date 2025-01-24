@@ -8,6 +8,9 @@
 [functions]
   directory = "functions"
 
+[[plugins]]
+package = "@netlify/plugin-inline-functions"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
