@@ -3,13 +3,10 @@
   functions = "functions"
 
 [[plugins]]
-  package = "@netlify/plugin-functions-core"
+  package = "@netlify/functions"
 
 [functions]
   directory = "functions"
-
-[[plugins]]
-  package = "@netlify/plugin-inline-functions"
 
 [[redirects]]
   from = "/*"
